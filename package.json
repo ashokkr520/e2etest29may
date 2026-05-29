@@ -1,0 +1,14 @@
+{
+  "name": "e2etest29may",
+  "version": "1.0.0",
+  "description": "Playwright E2E Tests with AI Capabilities incl MCP",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
