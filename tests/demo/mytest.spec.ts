@@ -16,7 +16,7 @@ test("Should do something", { tag: "@smoke" }, async ({ page }, testInfo) => {
   await page.locator("//h1").click();
 });
 
-test.only(
+test(
   "Should demo locators",
   { tag: "@smoke" },
   async ({ page }, testInfo) => {
@@ -36,3 +36,19 @@ test.only(
 
   },
 );
+
+test("should demo config file", async({page},testInfo) => {
+  console.log(`>> Config at run-time: ${JSON.stringify(testInfo.config)}`);
+     
+  
+}  
+);
+
+test.only("should demo fixtures", async({request},testInfo) => {
+  
+  // console.log(`The test runs on ${browserName}`);
+  request.
+}  
+);
+
+

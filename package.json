@@ -4,6 +4,11 @@
   "description": "Playwright E2E Tests with AI Capabilities incl MCP",
   "main": "index.js",
   "scripts": {
+    "pw-basic-cap": "npx playwright test tests/demo/pw.basic.cap.make.aptmnt.spec.ts --headed",
+    "inventory:trace": "npx playwright test tests/functional/inventory.spec.ts --trace on",
+    "inventory:cli": "PWDEBUG=1 npx playwright test tests/functional/inventory.spec.ts",
+    "inventory": "npx playwright test tests/functional/inventory.spec.ts --headed",
+    "inventory:ui": "npx playwright test tests/functional/inventory.spec.ts --ui --headed",
     "ele-int": "npx playwright test tests/demo/ele.handling.make.aptmnt.spec.ts --headed",
     "make-apt": "npx playwright test tests/functional/make.aptmnt.spec.ts --headed",
     "login": "npx playwright test tests/functional/login.spec.ts --headed",
@@ -14,6 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@types/node": "^25.9.1",
+    "allure-playwright": "^3.9.0"
   }
 }
