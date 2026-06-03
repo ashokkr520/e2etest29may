@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { request } from "node:http";
 
 test("Should load homepage with correct title", async ({ page }) => {
   //Go to the Home page
@@ -44,11 +45,12 @@ test("should demo config file", async({page},testInfo) => {
 }  
 );
 
-test.only("should demo fixtures", async({request},testInfo) => {
-  
-  // console.log(`The test runs on ${browserName}`);
-  request.
-}  
-);
+test.only("Should demo fixtures" , async({request}, testInfo) => {
+  //console.log(`>> The test runs on ${browserName}`);
+});
+
+
+
+
 
 
