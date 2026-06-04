@@ -1,4 +1,5 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, devices } from "@playwright/test";
+import { defaultMaxListeners } from "node:events";
 import { request } from "node:http";
 
 test("Should load homepage with correct title", async ({ page }) => {
@@ -45,8 +46,29 @@ test("should demo config file", async({page},testInfo) => {
 }  
 );
 
-test.only("Should demo fixtures" , async({request}, testInfo) => {
+test("Should demo fixtures" , async({request}, testInfo) => {
   //console.log(`>> The test runs on ${browserName}`);
+});
+
+test("Should demo devices" , async({page}, testInfo) => {
+  
+  console.log(`>> The list of devices: ${Object.keys(devices)}`);
+  //console.log(`>> The test runs on ${browserName}`);
+});
+
+//Remove the only .
+test("Should demo parallel run 1", {tag: '@demo'} , async({page}, testInfo) => {
+  
+  await page.goto("https://www.google.com");
+  //console.log(`>> The test runs on ${browserName}`);
+  
+});
+
+test("Should demo parallel run 2", {tag: '@demo'} , async({page}, testInfo) => {
+  
+  await page.goto("https://www.google.com");
+  //console.log(`>> The test runs on ${browserName}`);
+  
 });
 
 

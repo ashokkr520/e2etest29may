@@ -1,12 +1,12 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from "dotenv";
+import path from "path";
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 console.log(`Hello from Config`);
 
 /**
@@ -16,17 +16,19 @@ export default defineConfig({
   testDir: "./tests",
   // globalTimeout: 3 * 60 * 60 * 1000,
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false, //Default setting.
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+
   expect: {
     timeout: 10_000,
   },
-
+  globalSetup: require.resolve("./tests/helpers/global-setup.ts"),
+  globalTeardown: require.resolve("./tests/helpers/global-teardown.ts"),
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     [
@@ -58,10 +60,9 @@ export default defineConfig({
     trace: "on-first-retry",
     ignoreHTTPSErrors: true,
     navigationTimeout: 30_000,
-    screenshot: "only-on-failure",
-    video: "retain-on-failure",
+    screenshot: "on",
+    // video: "retain-on-failure",
     actionTimeout: 10_000,
-    
   },
 
   /* Configure projects for major browsers */
@@ -69,22 +70,22 @@ export default defineConfig({
     {
       name: "chromium",
       use: {
-        // ...devices["Desktop Chrome"],
-        viewport: null,
-        launchOptions: {
-          args: ["--start-maximized"],
-        },
+        ...devices["Desktop Chrome"],
+        // viewport: null,
+        // launchOptions: {
+        //   args: ["--start-maximized"],
+        // },
       },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
 
     // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
+    //   name: "webkit", //works in the windows machine.
+    //   use: { ...devices["Desktop Safari"], ignoreHTTPSErrors: true },
     // },
 
     /* Test against mobile viewports. */
@@ -106,6 +107,10 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
+    // {
+    //   name: "Galaxy A55",
+    //   use: {...devices["Galaxy A55"]}
+    // }
   ],
 
   /* Run your local dev server before starting the tests */

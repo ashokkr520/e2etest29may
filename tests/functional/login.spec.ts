@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Login functionality", () => {
+test.describe("Login functionality", {tag: '@demo'},() => {
   test.beforeEach("Go to login page", async ({ page }) => {
     await page.goto("https://katalon-demo-cura.herokuapp.com/");
     await expect(page).toHaveTitle("CURA Healthcare Service");
