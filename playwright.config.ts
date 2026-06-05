@@ -12,7 +12,7 @@ console.log(`Hello from Config`);
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export const baseConfig = defineConfig({
   testDir: "./tests",
   // globalTimeout: 3 * 60 * 60 * 1000,
   /* Run tests in files in parallel */
@@ -78,10 +78,10 @@ export default defineConfig({
       },
     },
 
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
+    // {
+    //   name: "firefox",
+    //   use: { ...devices["Desktop Firefox"] },
+    // },
 
     // {
     //   name: "webkit", //works in the windows machine.

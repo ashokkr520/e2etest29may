@@ -1,6 +1,8 @@
 import { test, expect, devices } from "@playwright/test";
 import { defaultMaxListeners } from "node:events";
 import { request } from "node:http";
+import constants from "../../data/constants.json";
+import { convertProcessSignalToExitCode } from "node:util";
 
 test("Should load homepage with correct title", async ({ page }) => {
   //Go to the Home page
@@ -67,6 +69,13 @@ test("Should demo parallel run 1", {tag: '@demo'} , async({page}, testInfo) => {
 test("Should demo parallel run 2", {tag: '@demo'} , async({page}, testInfo) => {
   
   await page.goto("https://www.google.com");
+  //console.log(`>> The test runs on ${browserName}`);
+  
+});
+
+test.only("Should demo constants data", {tag: '@demo'} , async({page}, testInfo) => {
+  
+  console.log(`>>> Constant data : ${JSON.stringify(constants.STATUSCODES)}`);
   //console.log(`>> The test runs on ${browserName}`);
   
 });
