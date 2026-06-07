@@ -7,7 +7,7 @@
     "dev:make-apt": "npx playwright test --config=config/dev.playwright.config.ts tests/functional/make.aptmnt.spec.ts --headed",
     "test:make-apt": "npx playwright test --config=config/test.playwright.config.ts tests/functional/make.aptmnt.spec.ts --headed",
     "demo:params": "npx playwright test tests/demo/params.make.aptmnt.spec.ts --headed",
-    "demo:parallel": "npx playwright test --grep @demo", 
+    "demo:parallel": "npx playwright test --grep @demo",
     "demo:global": "npx playwright test tests/functional/login.spec.ts",
     "demo:tag": "npx playwright test --grep @smoke --headed",
     "pw-adv-cap": "DEBUG=pw:api npx playwright test tests/demo/pw.adv.cap.login.spec.ts --headed",
@@ -26,8 +26,12 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "allure-playwright": "^3.9.0",
-    "dotenv": "^17.4.2"
+    "chalk": "^5.6.2",
+    "csv-parse": "^6.2.1",
+    "dotenv": "^17.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
   }
 }

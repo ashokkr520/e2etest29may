@@ -1,9 +1,15 @@
 import { test, expect } from '@playwright/test';
 import TestData from '../../data/test-data';
+import fileHelper from '../helpers/file-helper';
+import path from "path";
 
 
 //Access the data
-const makeApptTestData = TestData.makeAppointmentTestData(); // -> Returns 3 Objects:
+// const makeApptTestData = TestData.makeAppointmentTestData(); // -> Returns 3 Objects:
+ // -> Returns 3 Objects:
+const csvFilePath = path.resolve(`${process.cwd()}/data/functional/make-aptmnt-test-data.csv`);
+const makeApptTestData =fileHelper.readCSV(csvFilePath);
+
 
 //Access the data
 for (const appData of makeApptTestData) {
@@ -72,6 +78,7 @@ for (const appData of makeApptTestData) {
 
 });
 }
+
 
 
 

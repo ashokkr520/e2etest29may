@@ -4,6 +4,7 @@
         "module": "CommonJS", //most backward compatible
         "resolveJsonModule": true,
         "esModuleInterop": true,
+        "types": ["node"],
         "strict": false,
         "noImplicitAny": false
     },
